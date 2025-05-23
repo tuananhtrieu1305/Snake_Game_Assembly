@@ -22,5 +22,10 @@
    ```bash
    git clone https://github.com/tuananhtrieu1305/Snake_Game_Assembly.git
    ```
-
 2. **Lấy các file ra và sử dụng**
+
+## Tài liệu tham khảo
+
+- https://shorturl.at/p4aQD
+- https://cheatography.com/mika56/cheat-sheets/asm-8086/
+
