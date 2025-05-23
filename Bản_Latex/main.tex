@@ -1,0 +1,128 @@
+\documentclass{article}
+
+% --- Bộ mã và font tiếng Việt ---
+\usepackage[utf8]{inputenc}
+\usepackage[T5]{fontenc}
+\usepackage[vietnamese]{babel}
+
+% --- Hình ảnh và đồ họa ---
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{fontawesome5} 
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, arrows}
+
+% --- Trình bày văn bản ---
+\usepackage[outputdir=.]{minted}
+\usepackage{caption}
+\usepackage{fancybox}
+\usepackage{titlesec}
+\usepackage{tabularx} 
+\usepackage{tocloft}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{lipsum}
+\usepackage{array}
+\usepackage{ulem}
+\usepackage{fancyhdr}
+\usepackage[top=3.0cm, bottom=3.0cm, left=3.0cm, right=2.0cm, a4paper, margin=2cm]{geometry}
+\usepackage{indentfirst}
+\usepackage{setspace}
+\onehalfspacing
+
+% --- Định nghĩa các biến ---
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% --- Định nghĩa văn bản dạng code ---
+\lstdefinestyle{asm}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=4,
+    frame=single,
+    language=[x86masm]Assembler
+}
+
+% --- Định nghĩa style Flowchart ---
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!20]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=yellow!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+% --- Header & Footer ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Bài tập lớn KIẾN TRÚC MÁY TÍNH}
+\fancyhead[R]{Triệu Tuấn Anh - B23DCCN053}
+\fancyfoot[C]{\thepage}
+
+% --- Hyperlink cho mục lục ---
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\cftbeforesecskip}{5pt} % Khoảng cách giữa các mục \section
+\setlength{\cftbeforesubsecskip}{5pt} % Khoảng cách giữa các mục \subsection
+
+% --- Định nghĩa danh sách code (tương tự list of figures) ---
+\newcommand{\listofcodename}{\LARGE \bfseries DANH SÁCH MÃ NGUỒN}
+\newcommand{\listofcode}{\large \listof{lstlisting}{\listofcodename}}
+
+\begin{document}
+
+% --- Trang bìa ---
+\input{Section/cover_page}
+\newpage
+
+% --- Mục lục ---
+\renewcommand{\contentsname}{\centering \LARGE \bfseries MỤC LỤC}
+\tableofcontents
+\thispagestyle{empty} % Không đánh số trang ở mục lục
+
+\vspace{1cm}
+\vspace*{\fill}
+\noindent\rule{\textwidth}{0.4pt} % Đường kẻ dưới mục lục
+
+% --- Danh sách hình ảnh ---
+\newpage
+\thispagestyle{empty}
+\renewcommand{\listfigurename}{\centering \LARGE \bfseries DANH SÁCH HÌNH ẢNH}
+\listoffigures
+\newpage
+
+% --- Danh sách mã nguồn ---
+\newpage
+\thispagestyle{empty}
+\listofcode
+\newpage
+
+% --- Nội dung ---
+\section{Phần cá nhân}
+\input{Section/Individual/individual}
+
+\section{Phần làm nhóm}
+\input{Section/Group/group}
+
+% --- Trang kết thúc ---
+\input{Section/Ending_page}
+
+\end{document}

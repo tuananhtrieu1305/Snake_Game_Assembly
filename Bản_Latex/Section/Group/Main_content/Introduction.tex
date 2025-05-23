@@ -1,0 +1,23 @@
+Trò chơi \textit{Snake} (hay còn gọi là \textbf{rắn săn mồi}) là một trò chơi điện tử đơn giản nhưng kinh điển. Với lối chơi dễ hiểu nhưng đầy thử thách, Snake thường được lựa chọn làm bài tập thực hành trong các môn học về lập trình hoặc hệ thống máy tính. 
+
+\vspace{0.5em}
+
+Trong khuôn khổ môn học \textbf{Kiến trúc máy tính}, nhóm chúng em thực hiện đề tài xây dựng trò chơi Snake bằng ngôn ngữ Assembly trên trình giả lập \textbf{emu8086} - một môi trường mô phỏng vi xử lý Intel 8086 giúp người học tiếp cận sâu hơn với kiến trúc phần cứng và cách thức vận hành của một hệ thống máy tính ở mức thấp.
+
+\vspace{0.5em}
+
+\textbf{Mục tiêu đề tài:} Triển khai thành công trò chơi Snake với đầy đủ chức năng cơ bản như: điều khiển rắn bằng phím, sinh mồi ngẫu nhiên,... Ngoài ra, đề tài còn hướng tới việc khai thác hiệu quả các dịch vụ hệ thống qua ngắt BIOS/DOS (như \texttt{INT 10h}, \texttt{INT 16h}), từ đó nâng cao kỹ năng lập trình Assembly, hiểu rõ hơn về hoạt động của CPU, bộ nhớ, và giao tiếp phần cứng.
+
+\vspace{0.5em}
+
+\textbf{Giới hạn đề tài:} Đề tài giới hạn ở môi trường \textbf{chế độ văn bản} trên giả lập emu8086, không sử dụng đồ họa bitmap hay chế độ đồ họa nâng cao. Tốc độ xử lý và di chuyển của rắn được điều chỉnh bằng kỹ thuật trễ đơn giản, không sử dụng đa luồng hay xử lý song song. Tất cả logic trò chơi đều được viết thủ công bằng Assembly, không sử dụng thư viện hỗ trợ bên ngoài.
+
+\vspace{0.5em}
+
+\textbf{Nội dung báo cáo:} Dưới đây, chúng em:
+\begin{itemize}
+    \item \textbf{Phạm Tùng Dương}: làm phần 1 (in ra \texttt{msgstart}, \texttt{msgover}, viết các hàm \texttt{wait\_for\_enter}, \texttt{randomizeMeal} và nhãn \texttt{game\_over}).
+    \item \textbf{Triệu Tuấn Anh}: làm phần 2 (làm nhãn \texttt{game\_loop} và các nhãn nằm trong \texttt{game\_loop}).
+    \item \textbf{Lê Huy Đức}: làm phần 3 (các hàm \texttt{shownewhead}, \texttt{move\_snake} và \texttt{score\_plus}).
+\end{itemize}
+xin phép được trình bày về đề tài \textbf{Lập trình Snake Game trên Emu8086}

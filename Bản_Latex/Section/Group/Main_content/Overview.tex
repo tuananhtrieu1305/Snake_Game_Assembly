@@ -1,0 +1,59 @@
+\begin{enumerate}[leftmargin=*, label=\textbf{\arabic*.}, itemsep=1em]
+    
+    \item \textbf{Nội dung chính}
+    
+    \vspace{0.3cm}
+    \noindent\hangindent=1cm \hangafter=1
+    Xây dựng trò chơi \textbf{Snake (rắn săn mồi)} bằng ngôn ngữ Assembly trên trình giả lập \textbf{Emu8086}. Trò chơi mô phỏng cơ chế rắn di chuyển, ăn mồi và phát triển độ dài, đồng thời xử lý va chạm với tường hoặc chính thân rắn để xác định điều kiện kết thúc.
+    
+    \item \textbf{Tổng quan về trò chơi}
+    
+    \begin{itemize}[leftmargin=1.5em, label=$\bullet$]
+        \item Snake là trò chơi một người chơi, trong đó người chơi điều khiển một con rắn di chuyển liên tục trên màn hình để tìm và ăn các mồi xuất hiện ngẫu nhiên.
+        
+        \item Mỗi khi ăn được mồi, rắn sẽ dài ra và điểm số tăng lên.
+        
+        \item Trò chơi kết thúc khi rắn đâm vào chính thân mình.
+        
+        \item \textbf{Cách chơi:}
+        \begin{itemize}[leftmargin=1.5em, label=$\circ$]
+            \item Điều khiển bằng các phím mũi tên: ↑ ↓ ← →
+            \item Rắn di chuyển tự động theo hướng hiện tại
+            \item Không được quay ngược 180° tức thời
+            \item Ăn mồi để tăng độ dài và điểm số
+        \end{itemize}
+        
+        \item \textbf{Các chức năng chính:}
+        \begin{itemize}[leftmargin=1.5em, label=$\circ$]
+            \item Khởi tạo màn hình và vị trí ban đầu
+            \item Sinh mồi ngẫu nhiên không trùng rắn
+            \item Cập nhật chuyển động theo điều khiển
+            \item Kiểm tra va chạm thân/tường
+            \item Hiển thị điểm số khi kết thúc
+        \end{itemize}
+    \end{itemize}
+
+    \item \textbf{Giải thuật và kỹ thuật}
+    
+    \begin{itemize}[leftmargin=1.5em, label=$\bullet$]
+        \item \textbf{Cấu trúc dữ liệu:}
+        \begin{itemize}[leftmargin=1.5em, label=$\circ$]
+            \item Mảng tọa độ các đoạn thân rắn
+            \item Vị trí mồi sinh ngẫu nhiên
+        \end{itemize}
+        
+        \item \textbf{Thuật toán chính:}
+        \begin{itemize}[leftmargin=1.5em, label=$\circ$]
+            \item Di chuyển: đầu tiến, đuôi xóa (trừ khi ăn mồi)
+            \item Kiểm tra trùng mồi để tăng điểm
+            \item Phát hiện va chạm thân/tường
+        \end{itemize}
+        
+        \item \textbf{Kỹ thuật xử lý:}
+        \begin{itemize}[leftmargin=1.5em, label=$\circ$]
+            \item Ngắt \texttt{INT 10h} để vẽ màn hình
+            \item Ngắt \texttt{INT 16h} đọc phím
+            \item Vòng lặp điều khiển rắn 
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}

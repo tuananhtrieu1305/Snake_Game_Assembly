@@ -1,0 +1,189 @@
+\subsubsection{\textit{Giải thích nội dung các thanh ghi, trên cơ sở đó giải thích cơ chế quản lý bộ nhớ của hệ thống trong trường hợp cụ thể.}}
+
+\vspace{0.4cm}
+
+\noindent\large 
+Khi chương trình bắt đầu chạy, hệ điều hành tự động khởi tạo các thanh ghi, vùng nhớ và cấp phát không gian địa chỉ cho chương trình.
+
+\vspace{0.4cm}
+
+\noindent\large 
+Tương ứng với các câu lệnh trong mã nguồn, nội dung các thanh ghi có thể thay đổi hoặc không.
+
+\vspace{0.5cm}
+
+\begin{itemize}
+    \item \textbf{IP (Instruction Pointer):}
+    \begin{itemize}
+        \item \textbf{IP} là thanh ghi trỏ đến địa chỉ của lệnh tiếp theo sẽ được thực thi trong mã máy.
+        \item Khi một chương trình được thực thi, \textbf{IP} được cập nhật để trỏ đến lệnh tiếp theo trong mã nguồn, giúp CPU biết lệnh nào sẽ được thực thi tiếp theo.
+    \end{itemize}
+
+    \item \textbf{DS (Data Segment) và SI (Source Index):}
+    \begin{itemize}
+        \item \textbf{DS} là thanh ghi chỉ đến phân đoạn dữ liệu, nơi dữ liệu chương trình được lưu trữ.
+        \item \textbf{SI} thường được sử dụng trong các phép toán dữ liệu và là một trong các thanh ghi chỉ địa chỉ.
+        \item Khi chương trình yêu cầu truy cập dữ liệu từ bộ nhớ, \textbf{DS} và \textbf{SI} thường được sử dụng để xác định vị trí của dữ liệu.
+    \end{itemize}
+
+    \item \textbf{SS (Stack Segment) và BP (Base Pointer):}
+    \begin{itemize}
+        \item \textbf{SS} là thanh ghi chỉ đến phân đoạn ngăn xếp (stack segment), nơi lưu trữ các giá trị cục bộ và địa chỉ của các hàm.
+        \item \textbf{BP} thường được sử dụng để trỏ đến địa chỉ cơ sở của ngăn xếp (base of stack).
+        \item Ngăn xếp được sử dụng để lưu trữ giá trị trung gian và địa chỉ trả về từ các hàm con trong quá trình thực thi chương trình.
+    \end{itemize}
+
+    \item \textbf{SP (Stack Pointer):}
+    \begin{itemize}
+        \item \textbf{SP} là thanh ghi chỉ đến đỉnh của ngăn xếp (top of stack).
+        \item Khi dữ liệu được đẩy (push) hoặc rút (pop) ra khỏi ngăn xếp, \textbf{SP} sẽ thay đổi để chỉ đến vị trí mới nhất trong ngăn xếp.
+        \item \textbf{SP} cũng được sử dụng để cấp phát không gian mới cho dữ liệu trong ngăn xếp.
+    \end{itemize}
+\end{itemize}
+
+\vspace{0.6cm}
+
+\noindent\large 
+Cụ thể, trong trường hợp chương trình Assembly cho phép nhập vào một số và in ra màn hình giai thừa của số đó, cơ chế quản lý bộ nhớ như sau:
+
+\vspace{0.5cm}
+
+\begin{itemize}
+    \item \textbf{Khởi tạo bộ nhớ:}
+    \begin{itemize}
+        \item Khi chương trình bắt đầu, hệ điều hành cấp phát các đoạn mã (code), dữ liệu (data) và ngăn xếp (stack) cho chương trình.
+        \item Đoạn mã chứa các lệnh chương trình, đoạn dữ liệu chứa các biến, và ngăn xếp dùng để lưu trữ dữ liệu tạm thời.
+    \end{itemize}
+
+    \item \textbf{Phân đoạn bộ nhớ:}
+    \begin{itemize}
+        \item \textbf{CS} (Code Segment) trỏ tới đoạn mã của chương trình.
+        \item \textbf{DS} (Data Segment) trỏ tới đoạn dữ liệu của chương trình.
+        \item \textbf{SS} (Stack Segment) trỏ tới đoạn ngăn xếp của chương trình.
+    \end{itemize}
+
+    \item \textbf{Quản lý ngăn xếp:}
+    \begin{itemize}
+        \item Ngăn xếp được sử dụng để lưu trữ tạm thời dữ liệu và địa chỉ trả về khi gọi hàm.
+        \item \textbf{SP} được khởi tạo với giá trị từ khai báo \texttt{.Stack 100}, nghĩa là kích thước ngăn xếp là 100 byte.
+    \end{itemize}
+\end{itemize}
+
+\vspace{0.6cm}
+
+\noindent\large 
+Diễn giải nội dung của các câu lệnh trong mã nguồn và ảnh hưởng đến các thanh ghi:
+
+\vspace{0.5cm}
+
+\begin{itemize}
+    \item \textbf{Khởi tạo đoạn dữ liệu:}
+    \begin{lstlisting}[style=asm]
+    mov ax, @data
+    mov ds, ax  
+    \end{lstlisting}
+    \textbf{DS} trỏ tới đoạn dữ liệu, \textbf{AX} làm trung gian để chuyển địa chỉ đoạn dữ liệu vào \textbf{DS}.
+
+    \item \textbf{Hiển thị thông báo:}
+    \begin{lstlisting}[style=asm]
+    mov ah, 9              
+    lea dx, msg1
+    int 21h
+    \end{lstlisting}
+    hoặc
+    \begin{lstlisting}[style=asm]
+    mov ah, 9              
+    lea dx, msg2
+    int 21h
+    \end{lstlisting}
+    Gắn \textbf{AH} = 9, \textbf{DX} trỏ tới địa chỉ chuỗi thông báo cần in ra màn hình.
+
+    \item \textbf{Nhập dữ liệu:}
+    Gọi hàm nhập số:
+    \begin{lstlisting}[style=asm]
+    call NhapSo 
+    \end{lstlisting}
+    Trong hàm \texttt{NhapSo}:
+    \begin{lstlisting}[style=asm]
+    NhapSo proc                
+    mov x, 0               
+    mov y, 0               
+    mov bx, 10             
+    nhap:   
+        mov ah, 1         
+        int 21h 
+        cmp al, 13         
+        je nhapxong
+        sub al, '0'        
+        mov ah, 0
+        mov y, ax         
+        mov ax, x
+        mul bx            
+        add ax, y       
+        mov x, ax          
+        jmp nhap        
+    nhapxong:
+        mov ax, x          
+    ret
+    NhapSo endp 
+    \end{lstlisting}
+    \begin{itemize}
+        \item Gắn \textbf{AH} = 1 để nhập ký tự từ bàn phím, ký tự nhập vào lưu trong \textbf{AL}.
+        \item Sau khi nhập xong, số nhập được gán vào thanh ghi \textbf{AX}.
+    \end{itemize}
+
+    \item \textbf{Tính giai thừa:}
+    \begin{lstlisting}[style=asm]
+    inc n                  
+    mov bx, 1              
+    mov ax, 1     
+    Cal:
+        cmp bx, n          
+        je break           
+        mul bx            
+        inc bx           
+        jmp Cal     
+    \end{lstlisting}
+    \textbf{AX} lưu kết quả phép nhân, \textbf{BX} lưu biến đếm sử dụng trong nhãn \texttt{Cal}.
+
+    \item \textbf{In ra màn hình:}
+    Gọi hàm in số:
+    \begin{lstlisting}[style=asm]
+    call InSo 
+    \end{lstlisting}
+    Trong hàm \texttt{InSo}:
+    \begin{lstlisting}[style=asm]
+    InSo proc                 
+    push ax
+    push bx
+    push cx
+    push dx
+    
+    mov bx, 10             
+    mov cx, 0
+    beforePrint:
+        mov dx, 0
+        div bx            
+        push dx           
+        inc cx          
+        cmp ax, 0          
+        jg beforePrint
+    print:
+        pop dx      
+        mov ah, 2          
+        add dx, '0'      
+        int 21h      
+        loop print       
+    
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    ret
+    InSo endp
+    \end{lstlisting}
+    \begin{itemize}
+        \item Đẩy \textbf{AX}, \textbf{BX}, \textbf{CX}, \textbf{DX} vào ngăn xếp để bảo vệ dữ liệu.
+        \item Phân tách từng chữ số từ \textbf{AX} đưa vào stack, rồi lần lượt lấy ra in ra màn hình.
+    \end{itemize}
+\end{itemize}

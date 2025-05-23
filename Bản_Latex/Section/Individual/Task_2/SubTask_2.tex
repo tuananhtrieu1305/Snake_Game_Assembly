@@ -1,0 +1,71 @@
+\subsubsection{\textit{Dùng công cụ Debug khảo sát nội dung các thanh ghi IP, DS, ES, SS, CS, BP, SP}}
+
+\noindent\textbf{\large Phần mềm khảo sát:} 
+\begin{itemize}
+    \item Sử dụng phần mềm emu8086 microprocessor emulator
+\end{itemize}
+
+\vspace{0.3cm}
+
+\noindent\textbf{\large Các bước thực hiện:} 
+\begin{itemize}
+    \item Mở file .asm bằng phần mềm trên
+    \item Chọn emulate trên thanh công cụ rồi chọn nút debug nằm cuối của cửa sổ vừa mở ra 
+    \item Chạy Single step để xem kết quả debug từng mã lệnh từ đầu đến cuối
+\end{itemize}
+
+\vspace{0.3cm}
+
+\noindent\textbf{\large Các kết quả khi chạy single step:} Kết quả chi tiết thể hiện ở các bước trong Hình \ref{fig:debug-steps}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{Images/Step/Step1.png}
+        \caption{Bước 1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{Images/Step/Step2.png}
+        \caption{Bước 2}
+    \end{subfigure}
+    
+    \vspace{0.5cm}
+    
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{Images/Step/Step3.png}
+        \caption{Bước 3}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{Images/Step/Step4.png}
+        \caption{Bước 4}
+    \end{subfigure}
+    
+    \vspace{0.5cm}
+    
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{Images/Step/Step5.png}
+        \caption{Bước 5}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{Images/Step/Step6.png}
+        \caption{Bước 6}
+    \end{subfigure}
+    
+    \vspace{0.5cm}
+    
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{Images/Step/Step7.png}
+        \caption{Bước 7}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{Images/Step/Step8.png}
+        \caption{Bước 8}
+    \end{subfigure}
+    
+    \caption{Các bước chạy single step khảo sát nội dung các thanh ghi.}
+    \label{fig:debug-steps}
+\end{figure}

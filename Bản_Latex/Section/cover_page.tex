@@ -1,0 +1,57 @@
+\begin{titlepage}
+\begin{tikzpicture}[remember picture, overlay]
+% --- Viền ngoài ---
+\draw[line width=2pt, rounded corners=10pt]
+    ([shift={(1cm,-1cm)}] current page.north west)
+    rectangle
+    ([shift={(-1cm,1cm)}] current page.south east);
+% --- Viền trong ---
+\draw[line width=1pt, rounded corners=8pt]
+    ([shift={(1.5cm,-1.5cm)}] current page.north west)
+    rectangle
+    ([shift={(-1.5cm,1.5cm)}] current page.south east);
+\end{tikzpicture}
+
+\begin{center}
+\vspace*{1.2cm}
+
+% --- Trường và khoa ---
+{\bfseries\Large HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG}\\[0.4cm]
+{\bfseries\large KHOA CÔNG NGHỆ THÔNG TIN}
+
+\vspace{0.5cm}
+\noindent\rule{0.85\textwidth}{0.8pt}
+\vspace{1cm}
+
+% --- Logo ---
+\includegraphics[width=5cm]{Images/logo.png}
+\vspace{1.5cm}
+
+% --- Tiêu đề ---
+{\bfseries\fontsize{24}{28}\selectfont BÀI TẬP LỚN}\\[0.5cm]
+{\bfseries\fontsize{20}{24}\selectfont MÔN: KIẾN TRÚC MÁY TÍNH}
+
+\vspace{2cm}
+
+% --- Thông tin sinh viên ---
+\begin{center}
+\begin{tcolorbox}[colframe=black!80, colback=white, boxrule=0.8pt, arc=6pt, width=0.75\textwidth]
+{\setstretch{1.5}
+\noindent
+\begin{tabular}{@{}l l@{}}
+\textbf{\large Họ và tên:} & {\large Triệu Tuấn Anh} \\
+\textbf{\large Mã sinh viên:} & {\large B23DCCN053} \\
+\textbf{\large Lớp:} & {\large D23CQCN11-B} \\
+\textbf{\large Giảng viên hướng dẫn:} & {\large Trần Tiến Công} \\
+\end{tabular}
+}
+\end{tcolorbox}
+\end{center}
+
+\vspace*{\fill}
+
+% --- Dòng cuối ---
+{\bfseries\fontsize{14}{18}\selectfont Hà Nội, 2025}
+
+\end{center}
+\end{titlepage}
